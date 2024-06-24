@@ -29,10 +29,15 @@ def save_name_files(path, new_files):
 
 def load_name_files(path):
     archivos = []
-    with open(path, "r") as file:
-        for line in file:
-            archivos.append(line.strip())
+    try:
+        with open(path, "r") as file:
+            for line in file:
+                archivos.append(line.strip())
+    except FileNotFoundError:
+        # Si el archivo no existe, simplemente devuelve una lista vacía
+        pass
     return archivos
+
 
 def clean_files(path):
     with open(path, "w") as file:

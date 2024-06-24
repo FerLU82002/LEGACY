@@ -6,9 +6,14 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 
-FILE_LIST = "archivos.txt"
+# Asegúrate de que esta sea la primera llamada a Streamlit
+st.set_page_config(page_title='preguntaDOC')
 
-st.set_page_config('preguntaDOC')
+# Verifica que el archivo archivos.txt exista
+FILE_LIST = "archivos.txt"
+if not os.path.exists(FILE_LIST):
+    open(FILE_LIST, 'w').close()
+
 st.header("UNHEVAL LEGACY")
 
 # Inicializar la lista de archivos
